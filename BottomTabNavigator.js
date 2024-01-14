@@ -67,15 +67,33 @@
 // export default VerticalImages;
 
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import BottomTabNavigator from './BottomTabNavigator';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-const App = () => {
+import Tintuc from './screens/tin_tuc'; // Thay thế bằng tên màn hình thực tế
+import Trochuyen from './screens/tro_chuyen'; // Thay thế bằng tên màn hình thực tế
+import Danhba from './screens/danh_ba'; // Thay thế bằng tên màn hình thực tế
+import Thuvien from './screens/thu_vien'; // Thay thế bằng tên màn hình thực tế
+
+const Tab = createBottomTabNavigator();
+
+const BottomTabNavigator = () => {
   return (
-    <NavigationContainer>
-      <BottomTabNavigator />
-    </NavigationContainer>
+    <Tab.Navigator>
+      <Tab.Screen name="Tin tức" 
+      component={Tintuc}
+      // options={{
+      //   tabBarLabel: 'News',
+      //   tabBarIcon: ({ color, size }) => (
+      //     <Icon name="news" color={color} size={size} />
+      //   ),
+      // }}
+       />
+      <Tab.Screen name="Trò chuyện" component={Trochuyen} />
+      <Tab.Screen name="Danh bạ" component={Danhba} />
+      <Tab.Screen name="Thư viện" component={Thuvien} />
+    </Tab.Navigator>
   );
 };
 
-export default App;   
+export default BottomTabNavigator;
